@@ -3,6 +3,7 @@ package com.bean;
 public class Passanger {
 	
 	private int passanger_id;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String ssn;
@@ -22,11 +23,11 @@ public class Passanger {
 	}
 
 
-	public Passanger(int passanger_id, String firstName, String lastName, String ssn, int age, String street,
+	public Passanger(String username, String firstName, String lastName, String ssn, int age, String street,
 			int apartment_number, String city, String state, int zip, String tel_home, String tel_office,
 			String email) {
 		super();
-		this.passanger_id = passanger_id;
+		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.ssn = ssn;
@@ -39,6 +40,37 @@ public class Passanger {
 		this.tel_home = tel_home;
 		this.tel_office = tel_office;
 		this.email = email;
+	}
+
+
+	public Passanger(int passanger_id,String username, String firstName, String lastName, String ssn, int age, String street,
+			int apartment_number, String city, String state, int zip, String tel_home, String tel_office,
+			String email) {
+		super();
+		this.passanger_id = passanger_id;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.ssn = ssn;
+		this.age = age;
+		this.street = street;
+		this.apartment_number = apartment_number;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.tel_home = tel_home;
+		this.tel_office = tel_office;
+		this.email = email;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 

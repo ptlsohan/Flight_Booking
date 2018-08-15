@@ -21,8 +21,7 @@ public class Flight {
 		
 	}
 
-	public Flight(int flight_number, Time arrival_time, Date arrival_date, Time departure_time,
-			Date departure_date, int airplane_id, String departure_city, String arrival_city) {
+	public Flight(int flight_number, Time arrival_time, Date arrival_date, Time departure_time,Date departure_date, int airplane_id, String departure_city, String arrival_city) {
 		super();
 		this.flight_number = flight_number;
 		this.arrival_time = arrival_time;
@@ -32,6 +31,14 @@ public class Flight {
 		this.airplane_id = airplane_id;
 		this.departure_city = departure_city;
 		this.arrival_city = arrival_city;
+	}
+
+	@Override
+	public String toString() {
+		return "Flight [flight_number=" + flight_number + ", arrival_time=" + arrival_time + ", arrival_date="
+				+ arrival_date + ", departure_time=" + departure_time + ", departure_date=" + departure_date
+				+ ", airplane_id=" + airplane_id + ", departure_city=" + departure_city + ", arrival_city="
+				+ arrival_city + "]";
 	}
 
 	public int getFlight_number() {

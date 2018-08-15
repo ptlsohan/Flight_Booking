@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS Passanger;
 
 CREATE TABLE Passanger(
-Passanger_id INT NOT NULL,
+Passanger_id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR(20),
 FirstName VARCHAR(45) NOT NULL,
 LastName VARCHAR(45) ,
 SSN VARCHAR(9),
@@ -15,4 +16,8 @@ Tel_home VARCHAR(45),
 Tel_office VARCHAR(45),
 Email VARCHAR(45),
 PRIMARY KEY (Passanger_id)
+
 );
+
+
+

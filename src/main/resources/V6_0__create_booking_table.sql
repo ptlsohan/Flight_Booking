@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS Booking;
 
 CREATE TABLE Booking(
-Booking_id INT,
+Booking_id INT AUTO_INCREMENT,
 Passanger_id INT,
 Flight_number INT NOT NULL,
 Seat_number INT NOT NULL,
