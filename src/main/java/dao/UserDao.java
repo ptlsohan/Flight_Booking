@@ -46,7 +46,7 @@ public class UserDao {
 		u= rs.getString("username");
 		}
 	}
-	conn.commit();
+	
 	rs.close();
 
 	   return u;

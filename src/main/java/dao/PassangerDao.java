@@ -3,6 +3,7 @@ package dao;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.bean.Passanger;
@@ -44,4 +45,24 @@ public class PassangerDao {
 			System.out.println("return");
 			return ret;
 			}
+	
+	public static int getPassangerId(String uname) throws SQLException, IOException{
+		 
+		
+		Connection conn = DBStore.getConnection();
+		ResultSet rs;
+		int u = 0;
+	String selectUser ="SELECT Passanger_id FROM Passanger WHERE username=?";
+	try(
+	PreparedStatement pst = conn.prepareStatement(selectUser);){
+		pst.setString(1, uname);
+		rs = pst.executeQuery();
+		if(rs.next()){
+		u= rs.getInt("Passanger_id");
+		}
+	}
+	
+	rs.close();
+	   return u;
+	}
 }

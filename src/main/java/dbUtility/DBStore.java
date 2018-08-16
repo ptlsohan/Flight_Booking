@@ -14,9 +14,9 @@ public class DBStore {
  BasicDataSource ds;
 static DBStore dbs;
 Properties p;
-PropertyUtil obj= new PropertyUtil();
+//PropertyUtil obj= new PropertyUtil();
 	public DBStore() throws IOException {
-		p = obj.readPropertyFile();
+		p = PropertyUtil.readPropertyFile();
 		ds= new BasicDataSource();
 		ds.setDriverClassName(p.getProperty("DB_Driver"));
 		ds.setUrl(p.getProperty("DB_URL"));

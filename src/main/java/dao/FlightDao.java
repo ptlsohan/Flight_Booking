@@ -48,7 +48,8 @@ public class FlightDao {
 			String selectAllFlights ="select * from Flight";
 			PreparedStatement pst = conn.prepareStatement(selectAllFlights);
 			ResultSet rs = pst.executeQuery();
-			System.out.println("after execute");
+			
+			
 			Flight us=new Flight();
 			while(rs.next())
 			{
@@ -103,4 +104,43 @@ public class FlightDao {
 	conn.close();	
 	return flight;
 	}
+	
+	public static boolean removeFlight(int fno) throws IOException, SQLException{
+		 Connection conn = DBStore.getConnection();
+	 
+	String removeflight ="DELETE from Flight WHERE Flight_number=?";
+	try(PreparedStatement pst = conn.prepareStatement(removeflight);){
+	pst.setInt(1, fno);
+	pst.execute();
+	}catch(SQLException e) {
+		return false;
+	}
+
+	conn.commit();
+		return true;
+	
+	}
+	public static int updateFlight(Flight f) throws IOException, SQLException{
+		Connection conn = DBStore.getConnection();
+		int ret =0;
+		String insertIntoFlight = "UPDATE Flight SET Arrival_time=?,Arrival_date=?,Departure_time=?,Departure_date=?,Airplane_id=?,Departure_city=?,Arrival_city=? WHERE Flight_number=?";
+		try(PreparedStatement pst = conn.prepareStatement(insertIntoFlight);){
+			
+			pst.setTime(1,f.getArrival_time());
+			pst.setDate(2,f.getArrival_date());
+			pst.setTime(3,f.getDeparture_time());
+			pst.setDate(4,f.getDeparture_date());
+			pst.setInt(5,f.getAirplane_id());
+			pst.setString(6,f.getDeparture_city());
+			pst.setString(7,f.getArrival_city());
+			pst.setInt(8,f.getFlight_number());
+			
+			
+			
+			ret =pst.executeUpdate();
+			}
+			conn.commit();
+			
+			return ret;
+		}
 }
