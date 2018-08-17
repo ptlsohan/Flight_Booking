@@ -62,10 +62,17 @@ public class PassangerTest {
 	
 	}
 	@Test
-	public void test() throws IOException, SQLException {
+	public void testInsert() throws IOException, SQLException {
 		Passanger p =new Passanger(null,"Sohan","P","3345",25,"St Charles",1000,"St Charles","IL",12345,"12345","456789","abc@abc.com");
 		
 		assertEquals(1,PassangerDao.insertPassanger(p));
+	}
+	
+	@Test
+	public void testGetId() throws IOException, SQLException {
+		Passanger p =new Passanger("abc","Sohan","P","3345",25,"St Charles",1000,"St Charles","IL",12345,"12345","456789","abc@abc.com");
+		PassangerDao.insertPassanger(p);
+		assertEquals(2,PassangerDao.getPassangerId("abc"));
 	}
 
 }

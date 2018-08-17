@@ -39,6 +39,32 @@ public class FlightDao {
 			
 			return ret;
 	}
+	public static Flight getFlight(int fid) throws SQLException, IOException{
+		 Connection conn = DBStore.getConnection();
+		 int ret=0;
+		 String getFlight ="SELECT * FROM Flight WHERE Flight_number=?";
+		 Flight flight=null;
+			try(PreparedStatement pst = conn.prepareStatement(getFlight);){
+			pst.setInt(1,fid);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				int fno= rs.getInt("flight_number");
+				Time atime= rs.getTime("arrival_time");
+				Date adate= rs.getDate("arrival_date");
+				Time dtime= rs.getTime("departure_time");
+				Date ddate= rs.getDate("departure_date");
+				int air_id= rs.getInt("airplane_id");
+				String d_city= rs.getString("departure_city");
+				String a_city= rs.getString("arrival_city");
+				flight = new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
+			}
+			
+
+			}
+			
+			
+			return flight;
+	}
 	
 	
 	public static List<Flight> selectAllFlight() throws SQLException, IOException{
@@ -46,8 +72,8 @@ public class FlightDao {
 		List<Flight> flight=new ArrayList();
 		 
 			String selectAllFlights ="select * from Flight";
-			PreparedStatement pst = conn.prepareStatement(selectAllFlights);
-			ResultSet rs = pst.executeQuery();
+			try(PreparedStatement pst = conn.prepareStatement(selectAllFlights);
+			ResultSet rs = pst.executeQuery();){
 			
 			
 			Flight us=new Flight();
@@ -64,11 +90,8 @@ public class FlightDao {
 				Flight newFlight = new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
 				flight.add(newFlight);
 			}
+			}
 			
-			conn.commit();
-			rs.close();
-			pst.close();
-			conn.close();
 		
 			return flight;
 	}

@@ -80,5 +80,22 @@ public class FlightDaoTest {
 		assertArrayEquals(flist.toArray(), FlightDao.selectAllFlight().toArray());
 		
 	}
+	@Test
+	public void testUpdateFlight() throws IOException, SQLException {
+		
+		Date d= Date.valueOf("2018-8-19");
+		Date d2= Date.valueOf("2018-8-19");
+		Time t= Time.valueOf("08:23:45");
+		Time t2= Time.valueOf("08:23:45");
+		Flight f= new Flight(13,t,d,t2,d2,0,"chicago","boston");
+		assertEquals(1,FlightDao.updateFlight(f));
+	}
+	
+	@Test
+	public void testRemoveFlight() throws IOException, SQLException {
+		int f=13;
+		
+		assertTrue(FlightDao.removeFlight(f));
+	}
 
 }

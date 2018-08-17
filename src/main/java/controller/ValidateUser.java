@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bean.User;
 
+import dao.PassangerDao;
 import dao.UserDao;
 
 
@@ -23,17 +24,19 @@ public class ValidateUser extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String password = request.getParameter("password");
 		String utype= request.getParameter("utype");
-		
+		int i=0;
 		
 		String user=null;
 		try {
 			user = UserDao.selectUser(uname, password, utype);
+			i=PassangerDao.getPassangerId(uname);
 		} catch (SQLException e) {
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
 		if(user!=null) {
 			HttpSession session= request.getSession(true);
 		      session.setAttribute("username",uname);
+		      session.setAttribute("pId",i);
 		      session.setAttribute("usertype",utype);
 			request.getRequestDispatcher("/search.jsp").forward(request, response);
 		}else {

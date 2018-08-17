@@ -14,6 +14,17 @@ public class Booking {
 		
 	}
 
+	public Booking(int passanger_id, int flight_number, int seat_number, String baggage, String cls,
+			String reser_status) {
+		super();
+		this.passanger_id = passanger_id;
+		this.flight_number = flight_number;
+		this.seat_number = seat_number;
+		this.baggage = baggage;
+		this.cls = cls;
+		this.reser_status = reser_status;
+	}
+
 	public Booking(int booking_id, int passanger_id, int flight_number, int seat_number, String baggage, String cls,
 			String reser_status) {
 		super();

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bean.Passanger;
 
@@ -33,9 +34,14 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		String toffice= request.getParameter("toffice");
 		
 		Passanger p =new Passanger(uname,fname,lname,ssn,age,street,apt,city,state,zip,thome,toffice,email);
-		
+		int id=0;
 		try {
 			int ret=PassangerDao.insertPassanger(p);
+			if(ret==1) {
+				id=PassangerDao.getPassangerId(uname);
+				HttpSession session=request.getSession(false);
+				session.setAttribute("pid", id);
+			}
 			System.out.println(ret);
 		} catch (SQLException e) {
 		e.printStackTrace();

@@ -57,8 +57,11 @@ public class PassangerDao {
 	PreparedStatement pst = conn.prepareStatement(selectUser);){
 		pst.setString(1, uname);
 		rs = pst.executeQuery();
+		
 		if(rs.next()){
+			
 		u= rs.getInt("Passanger_id");
+	
 		}
 	}
 	

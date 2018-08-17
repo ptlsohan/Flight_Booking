@@ -34,7 +34,7 @@
       <th>${li.departure_date}</th>
       <td>${li.departure_city}</td>
       <td>${li.arrival_city}</td>
-      <td><form action="editFlight.jsp" method="post"><input type="hidden" id="val" name="f" value="${li.flight_number}"/><button>Edit</button></form></td>
+      <td><form action="editFlight.jsp" method="post"><input type="hidden" id="val" name="f" value="${li.flight_number}"/><c:set var="flist" value="${li}" scope="session" /><button>Edit</button></form></td>
       <td><form action="deleteFlight" method="post"><input type="hidden" id="val" name="fno" value="${li.flight_number}"/><button>Delete</button></form></td>
     </tr>
 </c:forEach>

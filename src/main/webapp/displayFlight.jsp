@@ -4,7 +4,7 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
-display page
+
 <table class="table" id="parent-list">
   <thead>
     <tr>
@@ -21,21 +21,25 @@ display page
   <tbody>
  
 <c:forEach items="${list}" var="li">
-<tr>
-      <th scope="row">${li.flight_number}</th>
+<tr >
+      <td scope="row" id="fno">${li.flight_number}</td>
       <td>${li.arrival_time}</td>
       <td>${li.arrival_date}</td>
       <td>${li.departure_time}</td>
-      <th>${li.departure_date}</th>
+      <td>${li.departure_date}</td>
       <td>${li.departure_city}</td>
       <td>${li.arrival_city}</td>
-      <td><form><input type="hidden" id="val" value=${li}/><button id="book_flight">Book</button></form></td>
+      <td>
+    <form action="bookFlight.jsp">
+      <input type="hidden" id="val" name="val" value="${li.flight_number}"/><button class="btn btn-primary"id="book_flight">Book</button>
+     </form> 
+      </td>
     </tr>
 </c:forEach>
 </tbody>
 </table>
 </div>
 
-<script src="./JS/bookScript.js"></script>
+<!-- <script src="./JS/bookScript.js"></script> -->
 </body>
 </html>
