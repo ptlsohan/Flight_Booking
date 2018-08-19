@@ -19,6 +19,7 @@ import dao.PassangerDao;
 public class AddProfile extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
+	int pid = Integer.parseInt(request.getParameter("pid"));
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String uname= request.getParameter("username");
@@ -33,10 +34,10 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		String thome= request.getParameter("thome");
 		String toffice= request.getParameter("toffice");
 		
-		Passanger p =new Passanger(uname,fname,lname,ssn,age,street,apt,city,state,zip,thome,toffice,email);
+		Passanger p =new Passanger(pid,uname,fname,lname,ssn,age,street,apt,city,state,zip,thome,toffice,email);
 		int id=0;
 		try {
-			int ret=PassangerDao.insertPassanger(p);
+			int ret=PassangerDao.updatePassanger(p);
 			if(ret==1) {
 				id=PassangerDao.getPassangerId(uname);
 				HttpSession session=request.getSession(false);

@@ -23,6 +23,7 @@
     </tr>
   </thead>
   <tbody>
+
  
 <c:forEach items="${blist}" var="li">
 <tr >
@@ -33,11 +34,17 @@
       <td>${li.getDeparture_date()}</td>
       <td>${li.getDeparture_city()}</td>
       <td>${li.getArrival_city()}</td> 
-       <td><form action="deleteBooking" ><input type="hidden" id="val" name="bId" value="${li.getBooking_id()}"/><button>Delete</button></form></td>
+       <td><form action="deleteBooking" ><input type="hidden" id="val" name="bId" value="${li.getBooking_id()}"/>
+       <input type="hidden" id="fno" name="fno" value="${li.getFlight_number()}"/>
+       <button>Delete</button></form></td>
     </tr>
 </c:forEach>
 </tbody>
 </table>
+<c:if test="${blist.size()==0}">
+ <h3>No booking available</h3>
+  
+  </c:if>
 </div>
 
 <!-- <script src="./JS/bookScript.js"></script> -->

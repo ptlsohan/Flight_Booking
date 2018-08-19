@@ -12,14 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bean.Flight;
+import com.bean.Seat;
 
 import dao.FlightDao;
+import dao.SeatDao;
 
 
 @WebServlet("/addFlightDetail")
 public class AddFlightDetail extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
+		int ret=0;
 		int fno = Integer.parseInt(request.getParameter("fno"));
 		String a_time = request.getParameter("atime");
 		String a_date= request.getParameter("adate");
@@ -28,18 +30,26 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		int air_id = Integer.parseInt(request.getParameter("air_id"));
 		String d_city = request.getParameter("d_city");
 		String a_city= request.getParameter("a_city");
-		
+		int eseat = Integer.parseInt(request.getParameter("eseat"));
+		int fseat = Integer.parseInt(request.getParameter("fseat"));
+		int bseat = Integer.parseInt(request.getParameter("bseat"));
 		Date ddate= Date.valueOf(d_date);
 		Date adate= Date.valueOf(a_date);
 		Time dtime= Time.valueOf(d_time);
 		Time atime = Time.valueOf(a_time);
 		Flight f= new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
+		Seat s=new Seat(fno,eseat,fseat,bseat);
 		try {
-			FlightDao.insertFlight(f);
+			ret=FlightDao.insertFlight(f);
+			if(ret==1) {
+				SeatDao.insertSeat(s);
+			}
 			
 		} catch (SQLException e) {
+			request.setAttribute("error", e);
 			
 			e.printStackTrace();
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
 		request.getRequestDispatcher("listFlight").forward(request, response);
 

@@ -6,7 +6,7 @@
 	<div class="container">
 
 <table class="table" id="parent-list">
-  <thead>
+  <thead class="thead-light">
     <tr>
       <th scope="col">Flight no</th>
       <th scope="col">Arrival time</th>
@@ -38,6 +38,10 @@
 </c:forEach>
 </tbody>
 </table>
+<c:if test="${list.size()==0}">
+  <h3>No flights available</h3>
+  
+  </c:if>
 </div>
 
 <!-- <script src="./JS/bookScript.js"></script> -->

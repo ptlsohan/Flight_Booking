@@ -30,7 +30,7 @@ public class Autocomplete extends HttpServlet {
 	        response.setContentType("application/json");
 	      //  response.setCharacterEncoding("UTF-8");
 	        List<Flight> list = new ArrayList<>();
-	        List<String> citylist = new ArrayList<>();
+	        List<Flight> citylist = new ArrayList<>();
 	        StringBuilder sb= new StringBuilder();
 	      try {
 			list = FlightDao.selectAllFlight();
@@ -58,7 +58,8 @@ public class Autocomplete extends HttpServlet {
 //	                        sb.append("},");
 //	                        System.out.println(li.getDeparture_city());
 //	                        namesAdded = true;
-	                    	citylist.add(li.getDeparture_city());
+	                    	//if(citylist.)
+	                    	citylist.add(li);
 	                    	//citylist.add(li.getDeparture_city(li.getArrival_city()));
 	                    }
 	                }

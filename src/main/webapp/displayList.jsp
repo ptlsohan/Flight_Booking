@@ -7,10 +7,10 @@
 <c:if test="${sessionScope.username !=null && \"admin\".equals(sessionScope.usertype)}">
 <div>
 
-<button type="button" class="btn btn-primary"><a href="addFlight.jsp">Add Flight</a></button>
+<button type="button" class="btn btn-primary"><a href="addFlight.jsp" style="text-decoration: none;color:white;">Add Flight</a></button>
 </div>
 <table class="table">
-  <thead>
+  <thead class="thead-light">
     <tr>
       <th scope="col">Flight no</th>
       <th scope="col">Arrival time</th>
@@ -24,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
- 
+
 <c:forEach items="${list}" var="li">
 <tr>
       <th scope="row">${li.flight_number}</th>
@@ -34,12 +34,16 @@
       <th>${li.departure_date}</th>
       <td>${li.departure_city}</td>
       <td>${li.arrival_city}</td>
-      <td><form action="editFlight.jsp" method="post"><input type="hidden" id="val" name="f" value="${li.flight_number}"/><c:set var="flist" value="${li}" scope="session" /><button>Edit</button></form></td>
+      <td><form action="editFlightDetail" method="post"><input type="hidden" id="val" name="f" value="${li.flight_number}"/><c:set var="flist" value="${li}" scope="session" /><button>Edit</button></form></td>
       <td><form action="deleteFlight" method="post"><input type="hidden" id="val" name="fno" value="${li.flight_number}"/><button>Delete</button></form></td>
     </tr>
 </c:forEach>
 </tbody>
 </table>
+<c:if test="${list.size()==0}">
+ <h3>No flights available</h3>
+  
+  </c:if>
 
 </div>
  </c:if>

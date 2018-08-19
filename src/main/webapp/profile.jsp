@@ -9,73 +9,73 @@
 <form action="addProfile" method="post" >
   <div class="form-group">
     <label for="fname">First name</label>
-    <input type="text" class="form-control" id="fname"  name="fname" placeholder="firstname" required>
+    <input type="text" class="form-control" id="fname"  name="fname" placeholder="firstname" value="${sessionScope.p.getFirstName()}" >
 
   </div>
   
-    
+    <input type="hidden" class="form-control" id="pid"  name="pid" value="${sessionScope.p.getPassanger_id()}" >
     <input type="hidden" class="form-control" id="username"  name="username" value="${sessionScope.username}" >
 
 
 <div class="form-group">
     <label for="lname">Last name</label>
-    <input type="text" class="form-control" id="lname"  name="lname" placeholder="lastname" required>
+    <input type="text" class="form-control" id="lname"  name="lname" placeholder="lastname" value="${sessionScope.p.getLastName()}" >
 
   </div>
   <div class="form-group">
     <label for="ssn">SSN</label>
-    <input type="text" class="form-control" id="ssn"  name="ssn" >
+    <input type="text" class="form-control" id="ssn"  name="ssn" value="${sessionScope.p.getSsn()}"  >
 
   </div>
    <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email"  name="email" >
+    <input type="email" class="form-control" id="email"  name="email" value="${sessionScope.p.getEmail()}" >
 
   </div>
   <div class="form-group">
     <label for="age">Age</label>
-    <input type="number" class="form-control" id="age"  name="age" >
+    <input type="number" class="form-control" id="age"  name="age" value="${sessionScope.p.getAge()}"  >
 
   </div>
   <div class="form-group">
     <label for="street">Street Address</label>
-    <input type="text" class="form-control" id="street"  name="street" >
+    <input type="text" class="form-control" id="street"  name="street" value="${sessionScope.p.getStreet()}" >
 
   </div>
   <div class="form-group">
     <label for="apt">Apartment</label>
-    <input type="number" class="form-control" id="apt"  name="apt" >
+    <input type="number" class="form-control" id="apt"  name="apt" value="${sessionScope.p.getApartment_number()}"  >
 
   </div>
   <div class="form-group">
     <label for="city">City</label>
-    <input type="text" class="form-control" id="city"  name="city" >
+    <input type="text" class="form-control" id="city"  name="city" value="${sessionScope.p.getCity()}"  >
 
   </div>
   <div class="form-group">
     <label for="state">State</label>
-    <input type="text" class="form-control" id="state"  name="state" >
+    <input type="text" class="form-control" id="state"  name="state" value="${sessionScope.p.getState()}" >
 
   </div>
   <div class="form-group">
     <label for="zip">Zip code</label>
-    <input type="number" class="form-control" id="zip"  name="zip" >
+    <input type="number" class="form-control" id="zip"  name="zip" value="${sessionScope.p.getZip()}" >
 
   </div>
    <div class="form-group">
     <label for="thome">Telephone(Home)</label>
-    <input type="text" class="form-control" id="thome"  name="thome" >
+    <input type="text" class="form-control" id="thome"  name="thome" value="${sessionScope.p.getTel_home()}" >
 
   </div>
    <div class="form-group">
     <label for="toffice">Telephone</label>
-    <input type="text" class="form-control" id="toffice"  name="toffice" >
+    <input type="text" class="form-control" id="toffice"  name="toffice" value="${sessionScope.p.getTel_office()}" >
 
   </div>
    </div>
    <div class="form-group">
     
-    <input type="submit" class="form-control" value="Done!" >
+   <button type="submit" class="btn btn-primary">Update</button>
 
   </div>
   </form>

@@ -72,7 +72,7 @@ public class BookDao {
 	public static int getBookingId(int fnum,int pid) throws IOException, SQLException {
 		 Connection conn = DBStore.getConnection();
 		 int bId=0;
-		 String selectId ="select Booking_id from Booking WHERE Flight_number=? AND Passanger_id=?";
+		 String selectId ="select Booking_id from Booking WHERE Flight_number=? AND Passanger_id=? ORDER BY Booking_id DESC LIMIT 1;";
 		 try(PreparedStatement pst = conn.prepareStatement(selectId);
 					){
 					

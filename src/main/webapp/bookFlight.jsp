@@ -8,11 +8,20 @@
 <c:if test="${sessionScope.username !=null}">
 	
 	<form action="BookFlight" method="post">
-	<input type="hidden" name="fnum" value="${param.val}" />
+	<input type="hidden" name="fnum" id="fnum" value="${param.val}" />
 	<input type="hidden" name="pid" value="${sessionScope.pid}" />
 	<div class="form-group">
-    <label for="seatno">Seat no</label>
-	<input type="number" id="seatno"  class="form-control" name="seatno" min=1 max=10 />
+    <label for="fclass">Class</label>
+<select name="class" id="fclass"  class="form-control">
+  <option value="Economy" selected>Economy</option>
+  <option value="First class">First class</option>
+  <option value="Businessn">Business</option>
+  
+</select>
+</div>
+	<div class="form-group">
+    <label for="seatno">Number of Seat</label>
+	<input type="number" id="seatno"  class="form-control" name="seatno" min=0 value="0" />
 	</div>
 	
 	<div class="form-group">
@@ -25,18 +34,10 @@
 </select>
 </div>
 
-<div class="form-group">
-    <label for="fclass">Class</label>
-<select name="class" id="fclass"  class="form-control">
-  <option value="Economy" selected>Economy</option>
-  <option value="First class">First class</option>
-  <option value="Businessn">Business</option>
-  
-</select>
-</div>
+
 
 <input type="hidden" name="status" id="status" value="confirmed" />
-<input type="submit" value="submit"/>
+ <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
 	</form>
 	</c:if>
   <c:if test="${sessionScope.username==null }">
@@ -47,5 +48,7 @@
   </c:if>
 	
 </div>
+<script  src="./JS/bookScript.js">
+</script>
 </body>
 </html>

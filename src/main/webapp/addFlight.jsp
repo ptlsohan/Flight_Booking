@@ -37,13 +37,28 @@
 
   </div>
   <div class="form-group">
-    <label for="d_city">Deaparture city</label>
+    <label for="d_city">Departure city</label>
     <input type="text" class="form-control" id="d_city" name="d_city"  >
 
   </div>
   <div class="form-group">
     <label for="a_city">Arrival city</label>
     <input type="text" class="form-control" id="a_city" name="a_city"  >
+
+  </div>
+  <div class="form-group">
+    <label for="eseat">Economy Seat</label>
+    <input type="number" class="form-control" id="eseat" name="eseat" min=0  >
+
+  </div>
+  <div class="form-group">
+    <label for="fseat">First class Seat</label>
+    <input type="number" class="form-control" id="fseat" name="eseat" min=0 >
+
+  </div>
+  <div class="form-group">
+    <label for="bseat">Business class Seat</label>
+    <input type="number" class="form-control" id="bseat" name="eseat"  min=0>
 
   </div>
 

@@ -24,8 +24,37 @@
 <div class="radio">
   <label><input type="radio" name="utype" value="admin">admin</label>
 </div>
-  <input type="submit" value="login">
+  <button type="submit" class="btn btn-primary">Login</button>
+
 </form>
 </div>
+<script>
+$().ready(function(){
+$('form').validate({
+rules: {
+uname: {
+required: true,
+minlength: 2
+},
+password: {
+required: true,
+minlength: 5
+},
+confirm_password: {
+required: true,
+minlength: 5,
+equalTo: password
+}
+},
+messages: {
+confirm_password: {
+	equalTo: "please enter the same password"
+}
+}
+
+});
+});
+
+</script>
 </body>
 </html>

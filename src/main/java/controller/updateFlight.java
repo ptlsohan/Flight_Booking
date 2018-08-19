@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bean.Flight;
+import com.bean.Seat;
 
 import dao.FlightDao;
+import dao.SeatDao;
 
 @WebServlet("/updateFlight")
 public class updateFlight extends HttpServlet {
@@ -33,9 +35,14 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		Date adate= Date.valueOf(a_date);
 		Time dtime= Time.valueOf(d_time);
 		Time atime = Time.valueOf(a_time);
+		int eseat = Integer.parseInt(request.getParameter("eseat"));
+		int fseat = Integer.parseInt(request.getParameter("fseat"));
+		int bseat = Integer.parseInt(request.getParameter("bseat"));
 		Flight f= new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
+		Seat s=new Seat(fno,eseat,fseat,bseat);
 		try {
 			FlightDao.updateFlight(f);
+			SeatDao.updateSeat(s);
 			
 		} catch (SQLException e) {
 			
