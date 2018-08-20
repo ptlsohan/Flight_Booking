@@ -53,12 +53,12 @@
   </div>
   <div class="form-group">
     <label for="fseat">First class Seat</label>
-    <input type="number" class="form-control" id="fseat" name="eseat" min=0 >
+    <input type="number" class="form-control" id="fseat" name="fseat" min=0 >
 
   </div>
   <div class="form-group">
     <label for="bseat">Business class Seat</label>
-    <input type="number" class="form-control" id="bseat" name="eseat"  min=0>
+    <input type="number" class="form-control" id="bseat" name="bseat"  min=0>
 
   </div>
 
