@@ -16,7 +16,7 @@
 					</div>
 					<div class="form-group">
 						<label for="ondate">On</label>
-						<input type="date" class="form-control" id="ondate" required name="ondate">
+						<input type="date" class="form-control" id="ondate" required name="ondate" min="2018-08-19">
 					</div>
 					
 					<button type="submit" class="btn btn-primary">Submit</button>

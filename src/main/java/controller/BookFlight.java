@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bean.Booking;
+import com.bean.Flight;
 import com.bean.Passanger;
 import com.bean.Seat;
 
 import dao.BookDao;
+import dao.FlightDao;
 import dao.SeatDao;
 
 @WebServlet("/BookFlight")
@@ -31,8 +33,10 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		String fclass= request.getParameter("class");
 		String status= request.getParameter("status");
 		Booking b = new Booking(pid,fnum,seatno,bag,fclass,status);
+		Flight flight= null;
 		
 		try {
+			flight= FlightDao.getFlight(fnum);
 			Seat s=SeatDao.getSeats(fnum);
 			int eseat=s.getEconomy_seat();
 			int fseat=s.getFirst_seat();
@@ -61,6 +65,11 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		if(bookId!=0) {
 			
 			session.setAttribute("bookId", bookId);
+			session.setAttribute("fname", p.getFirstName());
+			session.setAttribute("lname", p.getLastName());
+			session.setAttribute("seat", seatno);
+			session.setAttribute("fclass", fclass);
+			session.setAttribute("f", flight);
 		request.getRequestDispatcher("/confirmation.jsp").forward(request, response);
 		}
 		

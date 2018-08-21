@@ -7,7 +7,7 @@
 <c:if test="${sessionScope.username !=null && \"admin\".equals(sessionScope.usertype)}">
 <div>
 
-<button type="button" class="btn btn-primary"><a href="addFlight.jsp" style="text-decoration: none;color:white;">Add Flight</a></button>
+<a href="addFlight.jsp" style="text-decoration: none;color:white;"><button type="button" class="btn btn-primary" style="margin:10px;">Add Flight</button></a>
 </div>
 <table class="table">
   <thead class="thead-light">

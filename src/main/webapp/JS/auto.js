@@ -39,7 +39,17 @@ $(document).ready(function() {
            });
         
 	 } );
-
+	 var today = new Date();
+	 var m= today.getMonth();
+	 var d= today.getDate();
+	 var y=today.getFullYear();
+	 if(m < 10)
+	        m = '0' + m.toString();
+	    if(day < 10)
+	        d = '0' + d.toString();
+	 var min= y + '-' + m + '-' + d;
+	 console.log(min);
+	 $('#ondate').attr('min',min);
 	
 //           
 //            $('#to').change(function(event) {

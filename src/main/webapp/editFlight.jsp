@@ -50,7 +50,7 @@
     <input type="text" class="form-control" id="a_city" name="a_city"  value="${flist.getArrival_city() }">
 
   </div>
-   </div>
+   
   <div class="form-group">
     <label for="eseat">Economy seat</label>
     <input type="number" class="form-control" id="eseat" name="eseat" min=0 value="${requestScope.seat.getEconomy_seat()}" >
@@ -67,8 +67,9 @@
 
   </div>
 
-  <input type="submit" value="Update">
+  <button type="submit" class="btn btn-primary" style="margin:5px;">Update</button><a href="search.jsp"><button type="button" class="btn btn-primary" style="margin:5px;">Cancel</button></a>
 </form>
+</div>
  </c:if>
   <c:if test="${sessionScope.username==null }">
   <div>
