@@ -34,8 +34,11 @@
       <th>${li.departure_date}</th>
       <td>${li.departure_city}</td>
       <td>${li.arrival_city}</td>
-      <td><form action="editFlightDetail" method="post"><input type="hidden" id="val" name="f" value="${li.flight_number}"/><c:set var="flist" value="${li}" scope="session" /><button>Edit</button></form></td>
-      <td><form action="deleteFlight" method="post"><input type="hidden" id="val" name="fno" value="${li.flight_number}"/><button>Delete</button></form></td>
+<td><form action="editFlightDetail" method="post"><input type="hidden" id="val" name="f" value="${li.flight_number}"/><c:set var="flist" value="${li}" scope="session" /><button class="btn btn-primary">Edit</button></form></td>
+<td><form action="deleteFlight" method="post">
+<input type="hidden" id="val" name="fno" value="${li.flight_number}"/> 
+<button id="delete" class="btn btn-danger">Delete</button>
+</form></td>
     </tr>
 </c:forEach>
 </tbody>
@@ -53,5 +56,24 @@
  Please login to continue <a href="./login.jsp">login page</a>
   </div>
   </c:if>
+ <%--  <%
+session.setMaxInactiveInterval(2);
+%> --%>
+
+ <script type="text/javascript">
+var Msg ='<%=session.getAttribute("alertMsg")%>';
+    if (Msg != "null") {
+ function alertName(){
+ alert("Flight added");
+ 
+ } 
+ }
+    $('#delete').on('click',function(){
+    	alert('flight deleted');
+    });
+ </script>
+ 
+ <script type="text/javascript"> window.onload = alertName; </script>
+ <%-- ${sessionScope.removeAttribute("alertMsg")} --%>
 </body>
 </html>

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bean.Flight;
 import com.bean.Seat;
@@ -51,6 +52,9 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 			e.printStackTrace();
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
+		HttpSession session = request.getSession(false);
+		session.setAttribute("alertMsg", "Flight details added");
+		
 		request.getRequestDispatcher("listFlight").forward(request, response);
 
 }

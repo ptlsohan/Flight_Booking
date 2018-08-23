@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bean.Flight;
 
@@ -33,7 +34,6 @@ import dao.FlightDao;
 			} catch (SQLException e1) {
 				request.getRequestDispatcher("/Error.jsp").forward(request, response);
 			}
-		
 			request.setAttribute("list", fli);
 			request.getRequestDispatcher("/displayList.jsp").forward(request, response);
 				

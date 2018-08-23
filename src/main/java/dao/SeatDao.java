@@ -72,6 +72,20 @@ public class SeatDao {
 			
 			return ret;
 		}
+	public static boolean removeFlight(int fno) throws IOException, SQLException{
+		 Connection conn = DBStore.getConnection();
+	 
+	String removeflight ="DELETE from AvailableSeat WHERE Flight_number=?";
+	try(PreparedStatement pst = conn.prepareStatement(removeflight);){
+	pst.setInt(1, fno);
+	pst.execute();
+	}catch(SQLException e) {
+		return false;
+	}
+
+	conn.commit();
+		return true;
 	
+	}
 	
 }

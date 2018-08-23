@@ -21,15 +21,17 @@ color: red;
 font-size: 0.8em;
 }
 .bgimg {
-    /* background-image: url('./img/home.jpg');
+    background-image: url('./img/home.jpg');
     background-repeat: no-repeat;
-    width: 1200px; */
-    background-color: WhiteSmoke;
+ background-size:cover;
+ color: white;
+   
+  /*   background-color: WhiteSmoke; */
 }
 </style>
 
 </head>
-<body class="bgimg" >
+<body  class='bgimg'>
 
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary" >

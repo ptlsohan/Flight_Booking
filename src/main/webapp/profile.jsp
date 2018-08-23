@@ -72,13 +72,13 @@
     <input type="text" class="form-control" id="toffice"  name="toffice" value="${sessionScope.p.getTel_office()}" >
 
   </div>
-   </div>
-   <div class="form-group">
+  
     
-   <button type="submit" class="btn btn-primary">Update</button>
+   <button type="submit" class="btn btn-primary" style="margin:10px;">Update</button>
+  
 
-  </div>
   </form>
+   <a href="search.jsp"><button  class="btn btn-primary" style="margin:10px;">Cancel</button></a>
   </c:if>
   <c:if test="${sessionScope.username==null }">
   <div>
@@ -86,6 +86,52 @@
  Please login to edit profile <a href="./login.jsp">login page</a>
   </div>
   </c:if>
+  <script >
+  $().ready(function(){
+	  $('form').validate({
+	  rules: {
+	  
+	  fname: {
+	  	required: true,
+	  	minlength: 2
+	  },
+	  lname: {
+	  	required: true,
+	  	minlength: 2
+	  },
+	  ssn:{
+	  minlength:9,
+	  maxlength:9
+	  },
+	  age:{
+	  	min:18,
+	  	max:100
+	  	},
+	  street: {
+	  	required: true
+	  },
+	  apt: {
+	  	required:true
+	  },
+	  city: {
+	  	required:true
+	  },
+	  state: {
+	  	required:true
+	  },
+		
+	  },
+	  messages: {
+	  confirm_password: {
+	  	equalTo: "please enter the same password"
+	  }
+	  }
+
+	  });
+
+	  });
+
+  </script>
 </div>
 </body>
 </html>
