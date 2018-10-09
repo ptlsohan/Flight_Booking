@@ -6,6 +6,12 @@
 	<div class="container">
 
 <c:if test="${sessionScope.username !=null}">
+<div class="row justify-content-center" style="color:black;">
+  <div class="col-md-8">
+<div class="card" style="margin:20px; padding:10px;" >
+  <div class="card-header">
+   <h4>Edit Profile </h4> 
+  </div>
 <form action="addProfile" method="post" >
   <div class="form-group">
     <label for="fname">First name</label>
@@ -80,6 +86,9 @@
   </form>
    <a href="search.jsp"><button  class="btn btn-primary" style="margin:10px;">Cancel</button></a>
   </c:if>
+  </div>
+   </div>
+    </div>
   <c:if test="${sessionScope.username==null }">
   <div>
   <div>

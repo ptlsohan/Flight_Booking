@@ -2,12 +2,9 @@
     <wb-module deploy-name="Flight_reservation">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <dependent-module archiveName="mysql-connector-java-5.1.46.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib//Users/sohan/Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="Flight_reservation"/>
         <property name="java-output-path" value="/Flight_reservation/target/classes"/>
     </wb-module>

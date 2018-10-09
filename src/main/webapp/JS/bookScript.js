@@ -4,6 +4,7 @@ let result;
 let eseat;
 let fseat;
 let bseat;
+let version;
 $(document).ready(function(){
 	console.log("ready");
 	v=$('#fnum').val();
@@ -34,7 +35,8 @@ $(document).ready(function(){
 		$.get('fetchseats', {
 	        id : v
 	}, function(data) 
-	{console.log(data);
+	{//console.log(data);
+	//$('#version').attr("value",eseat);
 	for (var key in data) {
 	    console.log("seat",key);
 	    if(key==="economy_seat"){
@@ -43,10 +45,15 @@ $(document).ready(function(){
 	    	fseat=data[key];
 	    }else if(key==="business_seat"){
 	    	bseat=data[key];
+	    	console.log("business seat:",bseat);
+	    }else if(key==="version"){
+	    	version=data[key];
+	    	console.log("version id:",version);
 	    }
 	    
 	    }
-
+	console.log("out version id:",version);
+	$('#version').attr("value",version);
 	
 		if($('#fclass').val()==="Economy"){
 			$('#seatno').attr("max",eseat);
@@ -54,6 +61,7 @@ $(document).ready(function(){
 			$('#seatno').attr("max",fseat);
 		}else if($('#fclass').val()==="Business"){
 			$('#seatno').attr("max",bseat);
+			console.log("if block business seat:",bseat);
 		}
 		
 	});

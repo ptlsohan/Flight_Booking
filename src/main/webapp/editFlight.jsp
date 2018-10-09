@@ -20,7 +20,7 @@
   
   <div class="form-group">
     <label for="ddate">Departure date</label>
-    <input type="date" class="form-control" id="ddate" name="ddate"  value="${flist.getDeparture_date() }">
+    <input type="date" class="form-control" id="ddate" name="ddate" placeholder="yyyy-mm-dd"  value="${flist.getDeparture_date() }">
 
   </div>
   <div class="form-group">
@@ -31,7 +31,7 @@
   
   <div class="form-group">
     <label for="adate">Arrival date</label>
-    <input type="date" class="form-control" id="adate" name="adate" value="${flist.getArrival_date() }" >
+    <input type="date" class="form-control" id="adate" placeholder="yyyy-mm-dd" name="adate" value="${flist.getArrival_date() }" >
 
   </div>
    

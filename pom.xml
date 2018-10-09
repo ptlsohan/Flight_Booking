@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.java</groupId>
   <artifactId>Flight_reservation</artifactId>
-  <packaging>pom</packaging>
+  <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>Flight_reservation Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -75,6 +75,13 @@
     <artifactId>gson</artifactId>
     <version>2.8.5</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-core</artifactId>
+    <version>5.2.0</version>
+</dependency>
+
 
   </dependencies>
   <build>
@@ -105,6 +112,10 @@
 				<path>/Flight_reservation</path>	<!-- Configure application root URL -->
 				<contextReloadable>true</contextReloadable>
 			</configuration>
+    </plugin>
+    <plugin>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.19.1</version>
     </plugin>
   	</plugins>
   </build>

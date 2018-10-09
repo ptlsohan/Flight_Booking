@@ -34,7 +34,7 @@ font-size: 0.8em;
 <body  class='bgimg'>
 
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary" >
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary"  style="background-color: #37474F;">
   <a class="navbar-brand" href="#">Flight Booking</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

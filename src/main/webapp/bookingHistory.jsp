@@ -5,8 +5,8 @@
 <jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
 
-<table class="table" >
-  <thead>
+<table class="table" style="margin:20px;">
+  <thead  class="thead-dark">
     <tr>
      <th scope="col">Booking id</th>
       <th scope="col">Flight no</th>

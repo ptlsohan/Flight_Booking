@@ -4,6 +4,12 @@
 <jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
 <div class="container">
+<div class="row justify-content-center" style="color:black;">
+  <div class="col-md-8">
+<div class="card" style="margin:20px; padding:10px;" >
+  <div class="card-header">
+   <h4>Register </h4> 
+  </div>
 <form action="registerUser" method="post" id="form" class="form-horizontal">
   <div class="form-group">
     <label for="uname">Username</label>
@@ -94,6 +100,10 @@
 </form>
 </div>
 </div>
+</div>
+</div>
+</div>
+
 <script src="./JS/formvalidation.js">
 
 

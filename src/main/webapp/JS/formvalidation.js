@@ -46,6 +46,10 @@ equalTo: password
 messages: {
 confirm_password: {
 	equalTo: "please enter the same password"
+},
+ssn: {
+	minlength:"Please enter valid ssn",
+	maxlength:"Please enter valid ssn"
 }
 }
 

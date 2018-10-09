@@ -10,12 +10,13 @@
 	<form action="BookFlight" method="post">
 	<input type="hidden" name="fnum" id="fnum" value="${param.val}" />
 	<input type="hidden" name="pid" value="${sessionScope.pid}" />
+	<input type="hidden" id="version" name="version" value="0" />
 	<div class="form-group">
     <label for="fclass">Class</label>
 <select name="class" id="fclass"  class="form-control">
   <option value="Economy" selected>Economy</option>
   <option value="First class">First class</option>
-  <option value="Businessn">Business</option>
+  <option value="Business">Business</option>
   
 </select>
 </div>

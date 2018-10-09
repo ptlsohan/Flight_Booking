@@ -16,7 +16,7 @@
   
   <div class="form-group">
     <label for="ddate">Departure date</label>
-    <input type="date" class="form-control" id="ddate" name="ddate" required >
+    <input type="date" class="form-control" id="ddate" name="ddate" placeholder="yyyy-mm-dd" required >
 
   </div>
   <div class="form-group">
@@ -27,7 +27,7 @@
   
   <div class="form-group">
     <label for="adate">Arrival date</label>
-    <input type="date" class="form-control" id="adate" name="adate" required >
+    <input type="date" class="form-control" id="adate" name="adate" placeholder="yyyy-mm-dd" required >
 
   </div>
    

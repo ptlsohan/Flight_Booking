@@ -5,13 +5,28 @@ public class Seat {
 	private int economy_seat;
 	private int first_seat;
 	private int business_seat;
-	public Seat(int flight_number, int economy_seat, int first_seat, int business_seat) {
+	private int version;
+	
+	
+	
+	
+	public Seat() {
+		super();
+	}
+
+
+
+	public Seat(int flight_number, int economy_seat, int first_seat, int business_seat, int version) {
 		super();
 		this.flight_number = flight_number;
 		this.economy_seat = economy_seat;
 		this.first_seat = first_seat;
 		this.business_seat = business_seat;
+		this.version = version;
 	}
+
+
+
 	public int getFlight_number() {
 		return flight_number;
 	}
@@ -36,10 +51,30 @@ public class Seat {
 	public void setBusiness_seat(int business_seat) {
 		this.business_seat = business_seat;
 	}
+//	@Override
+//	public String toString() {
+//		return "['flight_number':'" + flight_number + "', 'economy_seat':'" + economy_seat + "', 'first_seat':'" + first_seat
+//				+ "', 'business_seat':'" + business_seat + "']";
+//	}
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "['flight_number':'" + flight_number + "', 'economy_seat':'" + economy_seat + "', 'first_seat':'" + first_seat
-				+ "', 'business_seat':'" + business_seat + "']";
+				+ "', 'business_seat':'" + business_seat + "', 'version':'" + version + "']";
 	}
 	
 	

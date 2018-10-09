@@ -7,6 +7,12 @@
 <c:if test="${ error!=null }">
 	<div style="color:red">${error}</div>
 </c:if>
+<div class="row justify-content-center" style="color:black;">
+  <div class="col-md-8">
+<div class="card" style="margin:20px; padding:10px;" >
+  <div class="card-header">
+   <h4>Login </h4> 
+  </div>
 <form action="validate" method="post" >
   <div class="form-group">
     <label for="uname">Username</label>
@@ -27,6 +33,9 @@
   <button type="submit" class="btn btn-primary">Login</button>
 
 </form>
+</div>
+</div>
+</div>
 </div>
 <script>
 $().ready(function(){
