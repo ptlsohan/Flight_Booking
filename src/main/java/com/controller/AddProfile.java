@@ -21,6 +21,9 @@ public class AddProfile extends HttpServlet {
 
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
+	
+	
+	
 		int pid = Integer.parseInt(request.getParameter("pid"));
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
@@ -35,6 +38,14 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		int zip = Integer.parseInt(request.getParameter("zip"));
 		String thome= request.getParameter("thome");
 		String toffice= request.getParameter("toffice");
+		
+		if(pid<=0 || fname==null || lname==null || ssn==null || email==null || age<=0 || street==null
+				|| apt<=0 || city==null || state==null || zip <=0 || thome == null || toffice ==null) {
+			request.setAttribute("error", "Please enter correct details ");
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+			return;
+			
+		}
 		
 		Passanger p =new Passanger(pid,uname,fname,lname,ssn,age,street,apt,city,state,zip,thome,toffice,email);
 		int id=0;

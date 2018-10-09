@@ -21,15 +21,17 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import com.bean.Airplane;
 import com.bean.Flight;
 import com.bean.Seat;
 import com.controller.AddFlightDetail;
+import com.dao.AirplaneDao;
 import com.dao.FlightDao;
 import com.dao.SeatDao;
 import com.exception.DBException;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({FlightDao.class,SeatDao.class})
+@PrepareForTest({FlightDao.class,SeatDao.class,AirplaneDao.class})
 public class AddFlightDetailTest {
 
 	@Mock
@@ -47,6 +49,8 @@ public class AddFlightDetailTest {
 		when(FlightDao.insertFlight(new Flight())).thenReturn(1);
 		PowerMockito.mockStatic(SeatDao.class);
 		when(SeatDao.insertSeat(new Seat())).thenReturn(1);
+		PowerMockito.mockStatic(AirplaneDao.class);
+		when(AirplaneDao.insertAirplane(new Airplane())).thenReturn(1);
 	}
 	
 	@Test
@@ -90,6 +94,43 @@ public class AddFlightDetailTest {
 		when(req.getParameter("bseat")).thenReturn("8");
 		when(req.getRequestDispatcher(anyString())).thenReturn(rd);
 		when(req.getSession(false)).thenReturn(session);
+		AddFlightDetail a= new AddFlightDetail();
+		a.doPost(req, res);
+		verify(req,times(1)).getRequestDispatcher("/Error.jsp");
+		
+	}
+	
+	
+	
+	@Test
+	public void test3() throws IOException, ServletException {
+		when(req.getParameter("fno")).thenReturn("1");
+		when(req.getParameter("atime")).thenReturn(null);
+		when(req.getParameter("dtime")).thenReturn(null);
+		when(req.getParameter("adate")).thenReturn(null);
+		when(req.getParameter("ddate")).thenReturn("2018-08-19");
+		when(req.getParameter("air_id")).thenReturn("2");
+		when(req.getParameter("a_city")).thenReturn("chicago");
+		when(req.getParameter("d_city")).thenReturn("nyc");
+		when(req.getParameter("eseat")).thenReturn("10");
+		when(req.getParameter("fseat")).thenReturn("10");
+		when(req.getParameter("bseat")).thenReturn("10");
+		when(req.getRequestDispatcher(anyString())).thenReturn(rd);
+		when(req.getSession(false)).thenReturn(session);
+		AddFlightDetail a= new AddFlightDetail();
+		a.doPost(req, res);
+		verify(req,times(1)).getRequestDispatcher("/Error.jsp");
+		
+	}
+	
+	@Test
+	public void test4() throws IOException, ServletException {
+		when(req.getParameter("fno")).thenReturn("error");
+		when(req.getParameter("air_id")).thenReturn("2");
+		when(req.getParameter("eseat")).thenReturn("10");
+		when(req.getParameter("fseat")).thenReturn("10");
+		when(req.getParameter("bseat")).thenReturn("10");
+		when(req.getRequestDispatcher(anyString())).thenReturn(rd);
 		AddFlightDetail a= new AddFlightDetail();
 		a.doPost(req, res);
 		verify(req,times(1)).getRequestDispatcher("/Error.jsp");

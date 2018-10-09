@@ -33,7 +33,7 @@
    
   <div class="form-group">
     <label for="air_id">Airplane Id</label>
-    <input type="number" class="form-control" id="air_id" name="air_id" required >
+    <input type="number" class="form-control" id="air_id" name="air_id" min=1 required >
 
   </div>
   <div class="form-group">

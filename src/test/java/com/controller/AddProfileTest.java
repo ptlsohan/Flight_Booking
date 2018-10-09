@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -38,8 +38,8 @@ public class AddProfileTest {
 	HttpServletResponse res;
 	@Mock
 	RequestDispatcher rd;
-	@Before
-	public void init() throws DBException {
+	@BeforeClass
+	public static void init() throws DBException {
 		PowerMockito.mockStatic(PassangerDao.class);
 		when(PassangerDao.insertPassanger(new Passanger())).thenReturn(1);
 		
@@ -66,6 +66,29 @@ public class AddProfileTest {
 		profile.doPost(req, res);
 		verify(req,Mockito.never()).getRequestDispatcher("/Error.jsp");
 		verify(res,times(1)).sendRedirect("search.jsp");
+	}
+	
+	@Test
+	public void test1() throws IOException, ServletException {
+		when(req.getParameter("fname")).thenReturn(null);
+		when(req.getParameter("lname")).thenReturn(null);
+		when(req.getParameter("username")).thenReturn(null);
+		when(req.getParameter("ssn")).thenReturn("12345");
+		when(req.getParameter("email")).thenReturn("abc@abc.com");
+		when(req.getParameter("age")).thenReturn("2");
+		when(req.getParameter("street")).thenReturn("king dr");
+		when(req.getParameter("apt")).thenReturn("1000");
+		when(req.getParameter("city")).thenReturn("chicago");
+		when(req.getParameter("state")).thenReturn("IL");
+		when(req.getParameter("zip")).thenReturn("60000");
+		when(req.getParameter("thome")).thenReturn("987654321");
+		when(req.getParameter("toffice")).thenReturn("987654321");
+		when(req.getParameter("pid")).thenReturn("12");
+		when(req.getRequestDispatcher(anyString())).thenReturn(rd);
+		
+		AddProfile profile= new AddProfile();
+		profile.doPost(req, res);
+		verify(req,times(1)).getRequestDispatcher("/Error.jsp");
 	}
 
 }

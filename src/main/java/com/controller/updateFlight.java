@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bean.Airplane;
 import com.bean.Flight;
 import com.bean.Seat;
+import com.dao.AirplaneDao;
 import com.dao.FlightDao;
 import com.dao.SeatDao;
 import com.exception.DBException;
@@ -41,9 +43,11 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		int fseat = Integer.parseInt(request.getParameter("fseat"));
 		int bseat = Integer.parseInt(request.getParameter("bseat"));
 		Flight f= new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
+		Airplane a= new Airplane(air_id,"Boeing",777);
 		int v=1;
 		Seat s=new Seat(fno,eseat,fseat,bseat,v);
 		try {
+			AirplaneDao.insertAirplane(a);
 			FlightDao.updateFlight(f);
 			SeatDao.updateSeat(s);
 			

@@ -4,6 +4,7 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
+	<div class="jumbotron" style="color:black; margin-top:10px;">
 	<main role="main" class="inner cover">
        
         <p class="lead">Booking successful!
@@ -26,6 +27,7 @@
   <tr><td>Class:</td><td>${sessionScope.fclass}</td></tr>
   <tr><td>Number of seat:</td><td>${sessionScope.seat}</td></tr>
 	</table>
+</div>
 </div>
 </body>
 </html>
