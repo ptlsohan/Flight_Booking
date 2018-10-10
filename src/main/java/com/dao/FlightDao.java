@@ -37,7 +37,7 @@ public class FlightDao {
 			ret =pst.executeUpdate();
 			conn.commit();
 			}catch (SQLException | IOException e) {
-				
+				System.out.println("Insertion error"+e.getMessage());
 				throw new DBException("Unable to insert record in Flight"+ e.getMessage());
 			}
 			

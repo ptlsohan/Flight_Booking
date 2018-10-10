@@ -12,6 +12,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,6 +39,7 @@ public class AddProfileTest {
 	HttpServletResponse res;
 	@Mock
 	RequestDispatcher rd;
+	@Mock HttpSession session;
 	@BeforeClass
 	public static void init() throws DBException {
 		PowerMockito.mockStatic(PassangerDao.class);
@@ -61,7 +63,7 @@ public class AddProfileTest {
 		when(req.getParameter("toffice")).thenReturn("987654321");
 		when(req.getParameter("pid")).thenReturn("12");
 		when(req.getRequestDispatcher(anyString())).thenReturn(rd);
-		
+		when(req.getSession(false)).thenReturn(session);
 		AddProfile profile= new AddProfile();
 		profile.doPost(req, res);
 		verify(req,Mockito.never()).getRequestDispatcher("/Error.jsp");
@@ -85,7 +87,7 @@ public class AddProfileTest {
 		when(req.getParameter("toffice")).thenReturn("987654321");
 		when(req.getParameter("pid")).thenReturn("12");
 		when(req.getRequestDispatcher(anyString())).thenReturn(rd);
-		
+		when(req.getSession(false)).thenReturn(session);
 		AddProfile profile= new AddProfile();
 		profile.doPost(req, res);
 		verify(req,times(1)).getRequestDispatcher("/Error.jsp");
