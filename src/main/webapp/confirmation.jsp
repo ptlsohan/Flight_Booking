@@ -3,30 +3,32 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="header.jsp"></jsp:include>
-	<div class="container">
-	<div class="jumbotron" style="color:black; margin-top:10px;">
+	<div class="container" >
+	<div class="row justify-content-center">
+	<div class="jumbotron col-md-8" style="color:black; margin-top:10px;">
 	<main role="main" class="inner cover">
        
-        <p class="lead">Booking successful!
-        </p>
+        <h3 style="text-align: center;"><strong>Booking successful!</strong>
+        </h3>
       </main>
 	
 	<table  class="table">
 
   <tbody>
-  <tr><td>Booking id:</td><td>${sessionScope.bookId}</td></tr>
-  <tr><td>First name:</td><td>${sessionScope.fname}</td></tr>
-  <tr><td>Last name:</td><td>${sessionScope.lname}</td></tr>
-  <tr><td>Flight number:</td><td>${sessionScope.f.getFlight_number()}</td></tr>
-  <tr><td>Departure city:</td><td>${sessionScope.f.getDeparture_city()}</td></tr>
-  <tr><td>Departure date:</td><td>${sessionScope.f.getDeparture_date()}</td></tr>
-  <tr><td>Departure time:</td><td>${sessionScope.f.getDeparture_time()}</td></tr>
-   <tr><td>Arrival city:</td><td>${sessionScope.f.getArrival_city()}</td></tr>
-  <tr><td>Arrival date:</td><td>${sessionScope.f.getArrival_date()}</td></tr>
-  <tr><td>Arrival time:</td><td>${sessionScope.f.getArrival_time()}</td></tr>
-  <tr><td>Class:</td><td>${sessionScope.fclass}</td></tr>
-  <tr><td>Number of seat:</td><td>${sessionScope.seat}</td></tr>
+  <tr><td><strong>Booking id:</strong></td><td>${sessionScope.bookId}</td></tr>
+  <tr><td><strong>First name:</strong></td><td>${sessionScope.fname}</td></tr>
+  <tr><td><strong>Last name:</strong></td><td>${sessionScope.lname}</td></tr>
+  <tr><td><strong>Flight number:</strong></td><td>${sessionScope.f.getFlight_number()}</td></tr>
+  <tr><td><strong>Departure city:</strong></td><td>${sessionScope.f.getDeparture_city()}</td></tr>
+  <tr><td><strong>Departure date:</strong></td><td>${sessionScope.f.getDeparture_date()}</td></tr>
+  <tr><td><strong>Departure time:</strong></td><td>${sessionScope.f.getDeparture_time()}</td></tr>
+   <tr><td><strong>Arrival city:</strong></td><td>${sessionScope.f.getArrival_city()}</td></tr>
+  <tr><td><strong>Arrival date:</strong></td><td>${sessionScope.f.getArrival_date()}</td></tr>
+  <tr><td><strong>Arrival time:</strong></td><td>${sessionScope.f.getArrival_time()}</td></tr>
+  <tr><td><strong>Class:</strong></td><td>${sessionScope.fclass}</td></tr>
+  <tr><td><strong>Number of seat:</strong></td><td>${sessionScope.seat}</td></tr>
 	</table>
+</div>
 </div>
 </div>
 </body>

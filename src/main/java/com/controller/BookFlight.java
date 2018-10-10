@@ -26,6 +26,18 @@ public class BookFlight extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		int bookId=0;
 		HttpSession session = request.getSession(false);
+		if( !isInteger(request.getParameter("seatno")) ||
+				!isInteger(request.getParameter("version")) ) {
+			request.setAttribute("error", "Please enter correct number ");
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+			return;
+		}
+		if(session.getAttribute("p")==null) {
+			request.setAttribute("error", "Session expired.Please login again ");
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+			return;
+		}
+		
 		int fnum = Integer.parseInt(request.getParameter("fnum"));
 		Passanger p = (Passanger)session.getAttribute("p");
 		System.out.println(p);
@@ -53,10 +65,13 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 				bseat-=seatno;
 			}
 			Seat newseat=new Seat(fnum,eseat,fseat,bseat,version);
+			System.out.println("flight number"+fnum);
 			int val=SeatDao.updateSeat(newseat);
+			System.out.println("after insert seat version"+val);
 			if(val==0) {
-				request.setAttribute("error","Booking failed");
+				request.setAttribute("error","Seat not available.Please try selecting another seat");
 				request.getRequestDispatcher("/Error.jsp").forward(request, response);
+				return;
 			}
 			 BookDao.insertBooking(b);
 			
@@ -81,5 +96,28 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		response.sendRedirect("confirmation.jsp");
 		}
 		
+}
+
+public static boolean isInteger(String str) {
+    if (str == null) {
+        return false;
+    }
+    if (str.isEmpty()) {
+        return false;
+    }
+    int i = 0;
+    if (str.charAt(0) == '-') {
+        if (str.length() == 1) {
+            return false;
+        }
+        i = 1;
+    }
+    for (; i < str.length(); i++) {
+        char c = str.charAt(i);
+        if (c < '0' || c > '9') {
+            return false;
+        }
+    }
+    return true;
 }
 }

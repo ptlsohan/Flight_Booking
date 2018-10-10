@@ -62,12 +62,13 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		
 		
 		Flight f= new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
-		Airplane a= new Airplane(air_id,"Boeing",777);
+//		Airplane a= new Airplane(air_id,"Boeing",777);
 		int v=1;
 		Seat s=new Seat(fno,eseat,fseat,bseat,v);
 		try {
-			AirplaneDao.insertAirplane(a);
+//			AirplaneDao.insertAirplane(a);
 			ret=FlightDao.insertFlight(f);
+			System.out.println("ret value after insert"+ret);
 			if(ret==1) {
 				SeatDao.insertSeat(s);
 			}else {

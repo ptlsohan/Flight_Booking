@@ -2,7 +2,13 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
-<form action="addFlightDetail" method="post" >
+	<div class="row justify-content-center" style="color:black;">
+  <div class="col-md-8">
+<div class="card" style="margin:20px; padding:10px;" >
+  <div class="card-header">
+   <h4>Add Flight </h4> 
+  </div>
+<form action="addFlightDetail" method="post" id="addflight">
   <div class="form-group">
     <label for="fno">Flight number</label>
     <input type="number" class="form-control" id="fno" name="fno" required >
@@ -33,7 +39,10 @@
    
   <div class="form-group">
     <label for="air_id">Airplane Id</label>
-    <input type="number" class="form-control" id="air_id" name="air_id" min=1 required >
+    <select name="air_id" id="air_id" form="addflight">
+    <option value="" selected disabled hidden>Choose here</option>
+    </select>
+  <!--   <input type="number" class="form-control" id="air_id" name="air_id" min=1 required > -->
 
   </div>
   <div class="form-group">
@@ -62,10 +71,17 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary" style="margin:10px">Add</button>
+  <button type="submit" class="btn btn-primary" style="margin:10px">Add</button><a href="listFlight"><button type="button" class="btn btn-primary" style="margin:5px;">Cancel</button></a>
   
 </form>
-<a href="listFlight"> <button  class="btn btn-primary" style="margin:10px">Cancel</button></a>
+<!-- <a href="listFlight"> <button  class="btn btn-primary" style="margin:10px">Cancel</button></a> -->
 </div>
+</div>
+</div>
+</div>
+<script  src="./JS/fetchId.js">
+</script>
+<script  src="./JS/validate.js">
+</script>
 </body>
 </html>

@@ -5,8 +5,13 @@
 	<div class="container">
 	
 	<c:if test="${sessionScope.username !=null && \"admin\".equals(sessionScope.usertype)}">
-	
-<form action="updateFlight" method="post" >
+	<div class="row justify-content-center" style="color:black;">
+  <div class="col-md-8">
+<div class="card" style="margin:20px; padding:10px;" >
+  <div class="card-header">
+   <h4>Edit Flight </h4> 
+  </div>
+<form action="updateFlight" method="post"  id="editflight" >
   <div class="form-group">
     
     <input type="hidden" class="form-control" id="fno" name="fno" value="${flist.getFlight_number()}"  >
@@ -37,7 +42,10 @@
    
   <div class="form-group">
     <label for="air_id">Airplane Id</label>
-    <input type="number" class="form-control" id="air_id" name="air_id" value="${flist.getAirplane_id() }" >
+    <select name="air_id" id="air_id" form="editflight">
+    <option  value="${flist.getAirplane_id() }" selected>${flist.getAirplane_id() }</option>
+    </select>
+<%--     <input type="number" class="form-control" id="air_id" name="air_id" value="${flist.getAirplane_id() }" > --%>
 
   </div>
   <div class="form-group">
@@ -67,8 +75,11 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary" style="margin:5px;">Update</button><a href="search.jsp"><button type="button" class="btn btn-primary" style="margin:5px;">Cancel</button></a>
+  <button type="submit" class="btn btn-primary" style="margin:5px;">Update</button><a href="listFlight"><button type="button" class="btn btn-primary" style="margin:5px;">Cancel</button></a>
 </form>
+</div>
+</div>
+</div>
 </div>
  </c:if>
   <c:if test="${sessionScope.username==null }">
@@ -79,5 +90,9 @@
   </c:if>
 
 </div>
+<script  src="./JS/fetchId.js">
+</script>
+<script  src="./JS/validate.js">
+</script>
 </body>
 </html>

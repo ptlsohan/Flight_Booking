@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bean.Airplane;
 import com.bean.Flight;
@@ -25,7 +26,7 @@ public class updateFlight extends HttpServlet {
 
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-
+System.out.println(request.getParameter("air_id"));
 		int fno = Integer.parseInt(request.getParameter("fno"));
 		String a_time = request.getParameter("atime");
 		String a_date= request.getParameter("adate");
@@ -43,11 +44,11 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		int fseat = Integer.parseInt(request.getParameter("fseat"));
 		int bseat = Integer.parseInt(request.getParameter("bseat"));
 		Flight f= new Flight(fno,atime,adate,dtime,ddate,air_id,d_city,a_city);
-		Airplane a= new Airplane(air_id,"Boeing",777);
+//		Airplane a= new Airplane(air_id,"Boeing",777);
 		int v=1;
 		Seat s=new Seat(fno,eseat,fseat,bseat,v);
 		try {
-			AirplaneDao.insertAirplane(a);
+//			AirplaneDao.insertAirplane(a);
 			FlightDao.updateFlight(f);
 			SeatDao.updateSeat(s);
 			
@@ -56,6 +57,8 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 			e.printStackTrace();
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
+		HttpSession session = request.getSession(false);
+		session.setAttribute("alertMsg", "Flight "+ fno+"updated");
 		response.sendRedirect("listFlight");
 
 		

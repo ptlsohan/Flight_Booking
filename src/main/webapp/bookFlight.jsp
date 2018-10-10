@@ -6,7 +6,11 @@
 	<div class="container">
 
 <c:if test="${sessionScope.username !=null}">
-	
+	<div class="container">
+	<div class="row justify-content-center" style="color:black;">
+  <div class="col-md-6">
+<div class="card" style="margin:20px; padding:10px;" >
+  <div class="card-header">Book Flight</div>
 	<form action="BookFlight" method="post">
 	<input type="hidden" name="fnum" id="fnum" value="${param.val}" />
 	<input type="hidden" name="pid" value="${sessionScope.pid}" />
@@ -20,10 +24,25 @@
   
 </select>
 </div>
-	<div class="form-group">
-    <label for="seatno">Number of Seat</label>
-	<input type="number" id="seatno"  class="form-control" name="seatno" min=0 value="0" />
+ <label for="seatno" class="label-control">Number of Seat</label>
+	<div class="input-group">
+    
+     <span class="input-group-btn">
+              <button type="button" class="btn btn-danger btn-number" onclick="removeSeat(event)" data-type="minus" data-field="quant[2]">
+                <span class="glyphicon glyphicon-minus">-</span>
+              </button>
+          </span>
+   <!--  <button type="button" onclick="removeSeat(event)" class="rem">-</button> -->
+	<input type="text" readonly id="seatno"  class="form-control input-number" name="seatno" min=1 value="1" />
+	 <!-- <button type="button" onclick="addSeat(event)" class="add">+</button> -->
+	 <span class="input-group-btn">
+              <button type="button" onclick="addSeat(event)" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+                  <span class="glyphicon glyphicon-plus">+</span>
+              </button>
+          </span>
 	</div>
+	
+	
 	
 	<div class="form-group">
     <label for="bag">Bags</label>
@@ -38,8 +57,12 @@
 
 
 <input type="hidden" name="status" id="status" value="confirmed" />
- <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
+ <button type="submit" class="btn btn-primary" id="submit" >Book</button>
 	</form>
+	</div>
+	</div>
+	</div>
+	</div>
 	</c:if>
   <c:if test="${sessionScope.username==null }">
   <div>

@@ -33,7 +33,7 @@ public class BookDao {
 		System.out.println("Booking:"+ret);
 		conn.commit();
 		}catch (SQLException | IOException e) {
-			
+			System.out.println("booking"+e.getMessage());
 			throw new DBException("Unable to insert record in Booking"+ e.getMessage());
 		}
 		
@@ -44,9 +44,9 @@ public class BookDao {
 		 
 			List<Booking> booklist=new ArrayList<Booking>();
 			 
-				String selectAllFlights ="select * from Booking WHERE Passanger_id=?";
+				String selectAllBooking ="select * from Booking WHERE Passanger_id=?";
 				try(Connection conn = DBStore.getConnection();
-					PreparedStatement pst = conn.prepareStatement(selectAllFlights);
+					PreparedStatement pst = conn.prepareStatement(selectAllBooking);
 				){
 				
 				pst.setInt(1,id);
@@ -74,6 +74,41 @@ public class BookDao {
 			
 				return booklist;
 	}
+	
+	public static Booking getBookById(int id) throws  DBException{
+		 
+		Booking book=new Booking();
+		 
+			String selectAllFlights ="select * from Booking WHERE Booking_id=?";
+			try(Connection conn = DBStore.getConnection();
+				PreparedStatement pst = conn.prepareStatement(selectAllFlights);
+			){
+			
+			pst.setInt(1,id);
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next())
+			{
+				int bId= rs.getInt("Booking_id");
+				int pId= rs.getInt("Passanger_id");
+				int fno = rs.getInt("Flight_number");
+				int sno= rs.getInt("Seat_number");
+				String bag = rs.getString("Baggage");
+				String cls = rs.getString("Class");
+				String status= rs.getString("Reser_status");
+				book = new Booking(bId,pId,fno,sno,bag,cls,status);
+				
+			}
+			
+			rs.close();
+			}catch (SQLException | IOException e) {
+				
+				throw new DBException("Unable to fetch records from Booking"+ e.getMessage());
+			}
+			
+		
+			return book;
+}
 	
 	public static int getBookingId(int fnum,int pid) throws DBException {
 		 

@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bean.Booking;
 import com.dao.BookDao;
 import com.dao.FlightDao;
+import com.dao.SeatDao;
 import com.exception.DBException;
 
 
@@ -26,8 +28,10 @@ public class DeleteBooking extends HttpServlet {
 		int fno = Integer.parseInt(request.getParameter("fno"));
 		
 		try {
+			
 			FlightDao.getFlight(fno);
 			BookDao.removeBooking(bId);
+			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("error","Unable to delete booking.Please try again later.");

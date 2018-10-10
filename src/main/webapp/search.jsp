@@ -41,5 +41,19 @@
 
 
 <script src="./JS/auto.js"></script>
+<script type="text/javascript">
+var Msg ='<%=session.getAttribute("alertMsg")%>';
+    if (Msg != "null") {
+ function alertName(){
+ alert(Msg);
+ 
+ } 
+ <%session.removeAttribute("alertMsg");%>
+ }
+    
+    
+ </script>
+  
+ <script type="text/javascript"> window.onload = alertName; </script>
 </body>
 </html>

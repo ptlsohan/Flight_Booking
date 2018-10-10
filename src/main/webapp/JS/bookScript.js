@@ -5,13 +5,15 @@ let eseat;
 let fseat;
 let bseat;
 let version;
+let min=1;
+let max;
 $(document).ready(function(){
 	console.log("ready");
 	v=$('#fnum').val();
-	if($('#seatno').val()==="0"){
-		console.log("disable");
-		$("button[type=submit]").prop("disabled",true);
-	}
+//	if($('#seatno').val()==="1"){
+//		console.log("disable");
+//		$("button[type=submit]").prop("disabled",true);
+//	}
 	getvalue();
 /* 	}); */
 /* $('#fclass').change(function() {
@@ -19,16 +21,18 @@ $(document).ready(function(){
 	
 	});
 	$('#fclass').change(function() {
+		$('#seatno').attr("value",1);
 		getvalue();
 	});
 	$('#seatno').change(function() {
-		if($('#seatno').val()==="0"){
-			console.log("disable");
-			$("button[type=submit]").prop("disabled",true);
-		}if($('#seatno').val()!=="0"){
-			console.log("disable");
-			$("button[type=submit]").prop("disabled",false);
-		}
+		
+//		if($('#seatno').val()==="0"){
+//			console.log("disable");
+//			$("button[type=submit]").prop("disabled",true);
+//		}if($('#seatno').val()!=="0"){
+//			console.log("disable");
+//			$("button[type=submit]").prop("disabled",false);
+//		}
 		
 	});
 	function getvalue(){
@@ -56,13 +60,46 @@ $(document).ready(function(){
 	$('#version').attr("value",version);
 	
 		if($('#fclass').val()==="Economy"){
+			max=eseat
 			$('#seatno').attr("max",eseat);
 		}else if($('#fclass').val()==="First class"){
+			max=fseat
 			$('#seatno').attr("max",fseat);
 		}else if($('#fclass').val()==="Business"){
+			max=bseat
 			$('#seatno').attr("max",bseat);
 			console.log("if block business seat:",bseat);
 		}
 		
 	});
+		
+		
 	}
+	function removeSeat(event){
+		event.preventDefault();
+		let val=$('#seatno').val();
+	
+		if(val<='1'){
+//			$("button[type=button] .rem").prop("disabled",true);
+		}else{
+			
+			let sum=parseInt(val)-1;
+			
+			$('#seatno').attr("value",sum);
+		}
+			
+		
+			
+		
+	}
+	function addSeat(e){
+		event.preventDefault();
+		let val=$('#seatno').val();
+		if(val>=max){
+			$("button[type=button .add]").prop("disabled",true);
+		}else{
+		let sum=parseInt(val)+1;
+		$('#seatno').attr("value",sum);
+		}
+	}
+	

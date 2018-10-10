@@ -64,16 +64,18 @@ session.setMaxInactiveInterval(2);
 var Msg ='<%=session.getAttribute("alertMsg")%>';
     if (Msg != "null") {
  function alertName(){
- alert("Flight added");
+ alert(Msg);
  
  } 
+ <%session.removeAttribute("alertMsg");%>
  }
+    
     $('#delete').on('click',function(){
     	alert('flight deleted');
     });
  </script>
- 
+  
  <script type="text/javascript"> window.onload = alertName; </script>
- <%-- ${sessionScope.removeAttribute("alertMsg")} --%>
+
 </body>
 </html>

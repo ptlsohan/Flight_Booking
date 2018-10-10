@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.FlightDao;
 import com.dao.SeatDao;
@@ -30,6 +31,8 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 			request.setAttribute("error", "Unable to delete flight. Please try again later.");
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
+		HttpSession session = request.getSession(false);
+		session.setAttribute("alertMsg", "Flight "+fno+" deleted");
 		response.sendRedirect("listFlight");
 }
 }

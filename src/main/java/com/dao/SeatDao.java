@@ -42,20 +42,21 @@ public class SeatDao {
 	public static int insertSeat(Seat s) throws DBException{
 		int ret=0;
 		 
-		String insertIntoAirplane = "INSERT INTO AvailableSeat(Flight_number,Economy_seat,First_seat,Business_seat) "
-		+ "VALUES (?,?,?,?);";
+		String insertIntoAirplane = "INSERT INTO AvailableSeat(Flight_number,Economy_seat,First_seat,Business_seat,version) "
+		+ "VALUES (?,?,?,?,?);";
 		try(Connection conn = DBStore.getConnection();
 				PreparedStatement pst = conn.prepareStatement(insertIntoAirplane);){
 		pst.setInt(1,s.getFlight_number());
 		pst.setInt(2,s.getEconomy_seat());
 		pst.setInt(3,s.getFirst_seat());
 		pst.setInt(4,s.getBusiness_seat());
+		pst.setInt(5,s.getVersion());
 		
 		
 		ret=pst.executeUpdate();
 		conn.commit();
 		}catch (SQLException | IOException e) {
-			
+			System.out.println("error inserting seat"+e.getMessage());
 			throw new DBException("Unable to insert record in Seat"+ e.getMessage());
 		}
 		return ret;
@@ -64,6 +65,7 @@ public class SeatDao {
 		
 		int ret =0;
 		int v= s.getVersion()+1;
+
 		String insertIntoSeat = "UPDATE AvailableSeat SET Economy_seat=?,First_seat=?,Business_seat=?,version=? WHERE Flight_number=? and version=?";
 		try(Connection conn = DBStore.getConnection();
 				PreparedStatement pst = conn.prepareStatement(insertIntoSeat);){
@@ -74,7 +76,7 @@ public class SeatDao {
 			pst.setInt(4, v);
 			pst.setInt(5,s.getFlight_number());
 			pst.setInt(6, s.getVersion());
-			
+	
 			
 			ret =pst.executeUpdate();
 			conn.commit();
@@ -87,6 +89,8 @@ public class SeatDao {
 			
 			return ret;
 		}
+	
+
 	public static boolean removeSeat(int fno) throws IOException, SQLException{
 		
 	 

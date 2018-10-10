@@ -81,10 +81,11 @@
   
     
    <button type="submit" class="btn btn-primary" style="margin:10px;">Update</button>
+   <a href="search.jsp"><button type="button" class="btn btn-primary" style="margin:5px;">Cancel</button></a>
   
 
   </form>
-   <a href="search.jsp"><button  class="btn btn-primary" style="margin:10px;">Cancel</button></a>
+<!--    <a href="search.jsp"><button  class="btn btn-primary" style="margin:10px;">Cancel</button></a> -->
   </c:if>
   </div>
    </div>
