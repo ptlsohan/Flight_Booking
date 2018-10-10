@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:include page="header.jsp"></jsp:include>
+	<c:if test="${sessionScope.username !=null}">
 	<div class="container" >
 	<div class="row justify-content-center">
 	<div class="jumbotron col-md-8" style="color:black; margin-top:10px;">
@@ -31,5 +32,12 @@
 </div>
 </div>
 </div>
+</c:if>
+  <c:if test="${sessionScope.username==null }">
+  <div>
+  <div>
+ Please login to edit profile <a href="./login.jsp">login page</a>
+  </div>
+  </c:if>
 </body>
 </html>

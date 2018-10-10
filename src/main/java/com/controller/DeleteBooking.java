@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bean.Booking;
+
 import com.dao.BookDao;
 import com.dao.FlightDao;
-import com.dao.SeatDao;
+
 import com.exception.DBException;
 
 

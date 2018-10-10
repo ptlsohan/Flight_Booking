@@ -85,13 +85,15 @@
   
 
   </form>
+  </div>
+  </div>
+  </div>
 <!--    <a href="search.jsp"><button  class="btn btn-primary" style="margin:10px;">Cancel</button></a> -->
   </c:if>
   </div>
-   </div>
-    </div>
+  
   <c:if test="${sessionScope.username==null }">
-  <div>
+ 
   <div>
  Please login to edit profile <a href="./login.jsp">login page</a>
   </div>
@@ -142,6 +144,6 @@
 	  });
 
   </script>
-</div>
+
 </body>
 </html>

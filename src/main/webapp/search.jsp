@@ -15,7 +15,7 @@
 					<div class="form-group">
 						
 						<label class=" control-label" for="from"><strong>From</strong></label>
-						<input type="text" class="form-control" id="from" name="from" placeholder="From" />
+						<input type="text" class="form-control" id="from" name="from" placeholder="From"  />
 					</div>
 					<div class="form-group">
 						<label class=" control-label" for="to"><strong>To</strong></label>
@@ -42,6 +42,39 @@
 
 <script src="./JS/auto.js"></script>
 <script type="text/javascript">
+$().ready(function(){
+	$.validator.addMethod( "dateNL", function( value, element ) {
+		return this.optional( element ) || /^([12]\d)?(\d\d)[\.\/\-](0?[1-9]|1[012])[\.\/\-](0?[1-9]|[12]\d|3[01])$/.test( value );
+	}, $.validator.messages.date );
+	$('form').validate({
+		rules: {
+		from: {
+		required: true	
+		},
+		to: {
+			required: true	
+			},
+		ondate: {
+			required: true,
+			dateNL: true
+		}
+		},messages: {
+			from: {
+				required: "Please enter departure city"	
+			},
+			to: {
+				required:  "Please enter destination city"		
+				},
+			ondate: {
+					required: "Please enter departure date",
+					dateNL : "Invalid date format"
+				}
+		}
+		});
+});
+</script>
+<script type="text/javascript">
+
 var Msg ='<%=session.getAttribute("alertMsg")%>';
     if (Msg != "null") {
  function alertName(){
@@ -51,7 +84,7 @@ var Msg ='<%=session.getAttribute("alertMsg")%>';
  <%session.removeAttribute("alertMsg");%>
  }
     
-    
+  
  </script>
   
  <script type="text/javascript"> window.onload = alertName; </script>

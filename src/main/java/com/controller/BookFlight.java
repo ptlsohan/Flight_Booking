@@ -97,6 +97,10 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 		}
 		
 }
+public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	
+	request.getRequestDispatcher("/login.jsp").forward(request, response);
+}
 
 public static boolean isInteger(String str) {
     if (str == null) {

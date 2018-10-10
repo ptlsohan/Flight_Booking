@@ -12,7 +12,7 @@ $(document).ready(function() {
 	        d = '0' + d.toString();
 	 var min= y + '-' + m + '-' + d;
 	 console.log(min);
-//	 $('#ondate').attr('min',min);
+	 $('#ondate').attr('min',min);
 	
 	 $('#from').keyup(function(event) {
             var name = $('#from').val();

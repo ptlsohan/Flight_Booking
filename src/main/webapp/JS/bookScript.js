@@ -5,15 +5,15 @@ let eseat;
 let fseat;
 let bseat;
 let version;
-let min=1;
+let min=0;
 let max;
 $(document).ready(function(){
 	console.log("ready");
 	v=$('#fnum').val();
-//	if($('#seatno').val()==="1"){
-//		console.log("disable");
-//		$("button[type=submit]").prop("disabled",true);
-//	}
+	if($('#seatno').val()==="0"){
+		console.log("disable");
+		$("button[type=submit]").prop("disabled",true);
+	}
 	getvalue();
 /* 	}); */
 /* $('#fclass').change(function() {
@@ -21,18 +21,18 @@ $(document).ready(function(){
 	
 	});
 	$('#fclass').change(function() {
-		$('#seatno').attr("value",1);
+		$('#seatno').attr("value",0);
 		getvalue();
 	});
 	$('#seatno').change(function() {
 		
-//		if($('#seatno').val()==="0"){
-//			console.log("disable");
-//			$("button[type=submit]").prop("disabled",true);
-//		}if($('#seatno').val()!=="0"){
-//			console.log("disable");
-//			$("button[type=submit]").prop("disabled",false);
-//		}
+		if($('#seatno').val()==="0"){
+			console.log("disable");
+			$("button[type=submit]").prop("disabled",true);
+		}if($('#seatno').val()!=="0"){
+			console.log("disable");
+			$("button[type=submit]").prop("disabled",false);
+		}
 		
 	});
 	function getvalue(){
@@ -79,11 +79,15 @@ $(document).ready(function(){
 		event.preventDefault();
 		let val=$('#seatno').val();
 	
-		if(val<='1'){
-//			$("button[type=button] .rem").prop("disabled",true);
+		if(val<='0'){
+			$("button[type=submit]").prop("disabled",true);
 		}else{
 			
 			let sum=parseInt(val)-1;
+
+			if(sum<='0'){
+				$("button[type=submit]").prop("disabled",true);
+			}
 			
 			$('#seatno').attr("value",sum);
 		}
@@ -96,10 +100,12 @@ $(document).ready(function(){
 		event.preventDefault();
 		let val=$('#seatno').val();
 		if(val>=max){
-			$("button[type=button .add]").prop("disabled",true);
+			
 		}else{
+			
 		let sum=parseInt(val)+1;
 		$('#seatno').attr("value",sum);
+		$("button[type=submit]").prop("disabled",false);
 		}
 	}
 	

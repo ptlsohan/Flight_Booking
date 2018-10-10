@@ -33,7 +33,7 @@
               </button>
           </span>
    <!--  <button type="button" onclick="removeSeat(event)" class="rem">-</button> -->
-	<input type="text" readonly id="seatno"  class="form-control input-number" name="seatno" min=1 value="1" />
+	<input type="text" readonly id="seatno"  class="form-control input-number" name="seatno" min=0 value="0" />
 	 <!-- <button type="button" onclick="addSeat(event)" class="add">+</button> -->
 	 <span class="input-group-btn">
               <button type="button" onclick="addSeat(event)" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">

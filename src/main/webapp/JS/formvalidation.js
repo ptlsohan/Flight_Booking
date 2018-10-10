@@ -14,8 +14,12 @@ lname: {
 	minlength: 2
 },
 ssn:{
+required:true,
 minlength:9,
 maxlength:9
+},
+email:{
+	required:true
 },
 age:{
 	min:18,

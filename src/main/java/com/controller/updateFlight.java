@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bean.Airplane;
 import com.bean.Flight;
 import com.bean.Seat;
-import com.dao.AirplaneDao;
+
 import com.dao.FlightDao;
 import com.dao.SeatDao;
 import com.exception.DBException;
