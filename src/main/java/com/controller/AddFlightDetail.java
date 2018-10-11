@@ -3,6 +3,8 @@ package com.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +28,20 @@ public class AddFlightDetail extends HttpServlet {
 
 public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		int ret=0;
+		String datepattern = "^([12]\\d)?(\\d\\d)[\\.\\/\\-](0?[1-9]|1[012])[\\.\\/\\-](0?[1-9]|[12]\\d|3[01])$";
+		 Pattern r = Pattern.compile(datepattern);
+		 Matcher m1 = r.matcher(request.getParameter("ddate"));
+		 Matcher m2 = r.matcher(request.getParameter("adate"));
+		 String timepattern = "^([01]\\d|2[0-3]|[0-9])(:[0-5]\\d){1,2}(:[0-5]\\d){1,2}$";
+		 Pattern r1 = Pattern.compile(timepattern);
+		 Matcher t1 = r1.matcher(request.getParameter("dtime"));
+		 Matcher t2 = r1.matcher(request.getParameter("atime"));
+		 if(!m1.matches() || !m2.matches() || !t1.matches() || !t2.matches()) {
+			 request.setAttribute("error", "Please enter correct date/time ");
+				request.getRequestDispatcher("/Error.jsp").forward(request, response);
+				return;
+		 }
+		 
 		if(!isInteger(request.getParameter("fno")) || !isInteger(request.getParameter("air_id"))
 				|| !isInteger(request.getParameter("eseat")) || !isInteger(request.getParameter("bseat"))
 				|| !isInteger(request.getParameter("fseat")) ) {

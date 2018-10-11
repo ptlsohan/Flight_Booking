@@ -15,7 +15,7 @@
   <div class="form-group">
     
     <input type="hidden" class="form-control" id="fno" name="fno" value="${flist.getFlight_number()}"  >
-
+<input type="hidden" id="version" name="version" value="${requestScope.seat.getVersion()}" />
   </div>
   <div class="form-group">
     <label for="dtime">Departure time</label>

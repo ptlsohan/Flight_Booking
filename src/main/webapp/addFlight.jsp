@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="header.jsp"></jsp:include>
+<c:if test="${sessionScope.username !=null}">
 	<div class="container">
 	<div class="row justify-content-center" style="color:black;">
   <div class="col-md-8">
@@ -79,6 +81,13 @@
 </div>
 </div>
 </div>
+ </c:if>
+  <c:if test="${sessionScope.username==null }">
+  <div>
+<div>
+ Please login to continue <a href="./login.jsp">login page</a>
+  </div>
+  </c:if>
 <script  src="./JS/fetchId.js">
 </script>
 <script  src="./JS/validate.js">
